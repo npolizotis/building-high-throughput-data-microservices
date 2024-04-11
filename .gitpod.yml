@@ -3,7 +3,11 @@ image:
 
 ports:
 - port: 15672 #rabbit mq
+  name: rabbitmq
+  onOpen: open-browser
 
 tasks:
-  - command: rabbitmq-server &
-  - command: rabbitmqctl enable_feature_flag all
+  - command: rabbitmq-server 
+  - init: |
+      gp ports await 15672
+      rabbitmqctl enable_feature_flag all
