@@ -1,2 +1,9 @@
 image:
   file: Dockerfile
+
+ports:
+- port: 15672 #rabbit mq
+
+tasks:
+  - command: rabbitmq-server &
+  - command: rabbitmqctl enable_feature_flag all
