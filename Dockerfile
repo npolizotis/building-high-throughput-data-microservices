@@ -93,4 +93,4 @@ USER gitpod
 
 
 
-## brew install rabbitmq prometheus grafana
+RUN brew install rabbitmq prometheus grafana
