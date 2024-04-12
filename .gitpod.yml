@@ -7,11 +7,12 @@ ports:
   onOpen: open-browser
 
 tasks:
-  - command: rabbitmq-server 
+  - command: sudo rabbitmq-server 
   - init: |
       gp ports await 15672
-      rabbitmqctl enable_feature_flag all
+      sudo rabbitmqctl enable_feature_flag all
 
 vscode:
   extensions:
     - redhat.java
+    - vscjava.vscode-java-pack
