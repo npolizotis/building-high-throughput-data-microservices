@@ -7,7 +7,9 @@ ports:
   onOpen: open-browser
 
 tasks:
-  - command: sudo rabbitmq-server 
+  - command: |
+      sudo rabbitmq-server &
+      sudo rabbitmq-plugins enable rabbitmq_management
   - init: |
       gp ports await 15672
       sudo rabbitmqctl enable_feature_flag all
