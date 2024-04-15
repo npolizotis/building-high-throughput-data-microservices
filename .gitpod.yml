@@ -8,15 +8,20 @@ ports:
 
 tasks:
   - command: |
-      sudo rabbitmq-plugins enable rabbitmq_management
       sudo rabbitmq-server &
+      sleep 3
+      sudo rabbitmq-plugins enable rabbitmq_management
+      sudo rabbitmq-plugins enable rabbitmq_stream
   - init: |
       gp ports await 15672
       sudo rabbitmqctl enable_feature_flag all
   - init: |
       mysql < mysql/start_script.sql
       cd /workspace/building-high-throughput-data-microservices/scripts/generate_batch_file && mkdir runtime && python3 generate_transaction_file.py
-      
+  - name: "Install common MVN projects"
+    init: |
+      cd /workspace/building-high-throughput-data-microservices/components/throughput-domain && ./mvnw install 
+      cd /workspace/building-high-throughput-data-microservices/components/transaction-services && ./mvnw install 
 
 vscode:
   extensions:
