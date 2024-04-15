@@ -13,6 +13,11 @@ tasks:
   - init: |
       gp ports await 15672
       sudo rabbitmqctl enable_feature_flag all
+  - init: |
+      mysql < mysql/start_script.sql
+      cd /workspace/building-high-throughput-data-microservices/scripts/generate_batch_file && mkdir runtime && python3 generate_transaction_file.py
+  - init: |
+      
 
 vscode:
   extensions:
