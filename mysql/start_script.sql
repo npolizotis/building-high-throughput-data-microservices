@@ -13,6 +13,6 @@ amount NUMERIC(20,3) NOT NULL,
 timestamp timestamp
 );
 
-use mysql;
+use batching;
 
 source /workspace/building-high-throughput-data-microservices/deployments/database/spring-batch-mysql.sql;

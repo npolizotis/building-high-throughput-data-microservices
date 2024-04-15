@@ -8,8 +8,8 @@ ports:
 
 tasks:
   - command: |
-      sudo rabbitmq-server &
       sudo rabbitmq-plugins enable rabbitmq_management
+      sudo rabbitmq-server &
   - init: |
       gp ports await 15672
       sudo rabbitmqctl enable_feature_flag all
