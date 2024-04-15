@@ -16,7 +16,6 @@ tasks:
   - init: |
       mysql < mysql/start_script.sql
       cd /workspace/building-high-throughput-data-microservices/scripts/generate_batch_file && mkdir runtime && python3 generate_transaction_file.py
-  - init: |
       
 
 vscode:
