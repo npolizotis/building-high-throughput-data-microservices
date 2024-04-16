@@ -10,8 +10,7 @@ tasks:
   - command: |
       sudo rabbitmq-server &
       sleep 3
-      sudo rabbitmq-plugins enable rabbitmq_management
-      sudo rabbitmq-plugins enable rabbitmq_stream
+      sudo rabbitmq-plugins enable rabbitmq_stream rabbitmq_prometheus rabbitmq_management
   - init: |
       gp ports await 15672
       sudo rabbitmqctl enable_feature_flag all
